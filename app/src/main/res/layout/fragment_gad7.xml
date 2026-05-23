@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GAD-7 Anxiety Scale"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Question 1 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Feeling nervous, anxious or on edge"
+            android:layout_marginTop="8dp"/>
+        <RadioGroup
+            android:id="@+id/rgQ1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/rbQ1_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Not at all"/>
+            <RadioButton android:id="@+id/rbQ1_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Several days"/>
+            <RadioButton android:id="@+id/rbQ1_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="More than half the days"/>
+            <RadioButton android:id="@+id/rbQ1_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nearly every day"/>
+        </RadioGroup>
+
+        <!-- Repeat for other questions... for now I'll just do 2 for example or all 7 -->
+        <!-- Question 2 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Not being able to stop or control worrying"
+            android:layout_marginTop="8dp"/>
+        <RadioGroup
+            android:id="@+id/rgQ2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/rbQ2_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Not at all"/>
+            <RadioButton android:id="@+id/rbQ2_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Several days"/>
+            <RadioButton android:id="@+id/rbQ2_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="More than half the days"/>
+            <RadioButton android:id="@+id/rbQ2_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nearly every day"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnSubmitGad7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:layout_marginTop="24dp"/>
+
+    </LinearLayout>
+</ScrollView>

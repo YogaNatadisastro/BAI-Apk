@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeAdminFragment">
+
+    <fragment
+        android:id="@+id/homeAdminFragment"
+        android:name="com.project.bai_app.ui.adminPage.home.HomeFragment"
+        android:label="Home Admin Fragment">
+        <action
+            android:id="@+id/action_homeAdminFragment_to_gad7Fragment"
+            app:destination="@id/gad7Fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gad7Fragment"
+        android:name="com.project.bai_app.ui.form.Gad7Fragment"
+        android:label="GAD-7 Assessment" >
+        <action
+            android:id="@+id/action_gad7Fragment_to_hadsFragment"
+            app:destination="@id/hadsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/hadsFragment"
+        android:name="com.project.bai_app.ui.form.HadsFragment"
+        android:label="HADS Assessment" >
+        <action
+            android:id="@+id/action_hadsFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.project.bai_app.ui.result.ResultFragment"
+        android:label="Result Fragment" />
+
+</navigation>
