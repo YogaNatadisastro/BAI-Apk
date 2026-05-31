@@ -7,6 +7,7 @@ import com.project.bai_app.di.model.gad7.GadRequest
 import com.project.bai_app.di.model.hads.HadsRequest
 import com.project.bai_app.di.model.info.InfoRequest
 import com.project.bai_app.di.model.login.LoginRequest
+import com.project.bai_app.di.model.session.SessionRequest
 import com.project.bai_app.di.model.signup.SignupRequest
 
 class MainRepository {
@@ -17,13 +18,16 @@ class MainRepository {
     suspend fun registerUser(request: SignupRequest) =
         ApiClient.apiService.postRegister(request)
 
-    suspend fun postInfoByAdmin(request: InfoRequest) =
-        ApiClient.apiService.postInfo(request)
+//    suspend fun postInfoByAdmin(request: InfoRequest) =
+//        ApiClient.apiService.postInfo(request)
+//
+//    suspend fun postForm(
+//        formInfoId: Int,
+//        request: FormRequest
+//    ): FormResponse = ApiClient.apiService.postSubmit(formInfoId, request)
 
-    suspend fun postForm(
-        formInfoId: Int,
-        request: FormRequest
-    ): FormResponse = ApiClient.apiService.postSubmit(formInfoId, request)
+    suspend fun sessionAssessment(request: SessionRequest) =
+        ApiClient.apiService.startSession(request)
 
     suspend fun postGad7(request: GadRequest) =
         ApiClient.apiService.postGad7(request)

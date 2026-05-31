@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- GAD-7 Questions -->
+    <string-array name="gad7_questions">
+        <item>Feeling nervous, anxious, or on edge</item>
+        <item>Not being able to stop or control worrying</item>
+        <item>Worrying too much about different things</item>
+        <item>Trouble relaxing</item>
+        <item>Being so restless that it\'s hard to sit still</item>
+        <item>Becoming easily annoyed or irritable</item>
+        <item>Feeling afraid as if something awful might happen</item>
+    </string-array>
+
+    <string-array name="gad7_options">
+        <item>Not at all</item>
+        <item>Several days</item>
+        <item>More than half the days</item>
+        <item>Nearly every day</item>
+    </string-array>
+
+    <!-- HADS Anxiety Questions -->
+    <string-array name="hads_anxiety_questions">
+        <item>I feel tense or \'wound up\'</item>
+        <item>I get a sort of frightened feeling as if something awful is about to happen</item>
+        <item>Worrying thoughts go through my mind</item>
+        <item>I can sit at ease and feel relaxed</item>
+        <item>I get a sort of frightened feeling like \'butterflies\' in the stomach</item>
+        <item>I feel restless as if I have to be on the move</item>
+        <item>I get sudden feelings of panic</item>
+    </string-array>
+
+    <!-- HADS Depression Questions -->
+    <string-array name="hads_depression_questions">
+        <item>I still enjoy the things I used to enjoy</item>
+        <item>I can laugh and see the funny side of things</item>
+        <item>I feel cheerful</item>
+        <item>I feel as if I am slowed down</item>
+        <item>I have lost interest in my appearance</item>
+        <item>I look forward with enjoyment to things</item>
+        <item>I can enjoy a good book or radio or TV program</item>
+    </string-array>
+
+    <!-- Note: HADS has different options for each question -->
+    <!-- You'll need to handle these dynamically in code -->
+</resources>
