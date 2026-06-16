@@ -29,4 +29,9 @@
     <string name="_2">2</string>
     <string name="previous">Previous</string>
     <string name="next">Next</string>
+    <string name="assessment_result">Assessment Result</string>
+    <string name="view_and_review_bai_assessment_history_for_all_patients">View and review BAI assessment history for all patients</string>
+    <string name="text_gad7">Over the last 2 weeks how oftern have you been bothered by the following problem?</string>
+    <string name="todo">TODO</string>
+    <string name="coution">Please read each item and select the reply which comes closest to how you have been feeling in the past week.</string>
 </resources>
