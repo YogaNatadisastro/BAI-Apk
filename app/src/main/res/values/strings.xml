@@ -34,4 +34,15 @@
     <string name="text_gad7">Over the last 2 weeks how oftern have you been bothered by the following problem?</string>
     <string name="todo">TODO</string>
     <string name="coution">Please read each item and select the reply which comes closest to how you have been feeling in the past week.</string>
+    <string name="anxiety_7_items">Anxiety (7 items)</string>
+    <string name="depression_7_item">Depression (7 item)</string>
+    <string name="info_patient">Please fill in the patient\'s basic information before procceding with the assessment.</string>
+    <string name="full_name">Full Name</string>
+    <string name="age">Age</string>
+    <string name="question">1. Feeling nervous, anxious, or on edge</string>
+    <string name="not_at_all">Not at all</string>
+    <string name="several_days">Several days</string>
+    <string name="more_than_half_the_days">More than half the days</string>
+    <string name="nearly_every_day">Nearly every day</string>
+    <string name="description">0-7: Minimal anxiety\n8-15: Mild anxiety\n16-25: Moderate anxiety\n26-63: Severe anxiety</string>
 </resources>

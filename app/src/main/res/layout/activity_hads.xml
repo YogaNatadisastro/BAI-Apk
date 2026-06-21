@@ -21,7 +21,7 @@
             android:padding="16dp">
 
             <!-- Header Card -->
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -29,7 +29,7 @@
                 app:cardElevation="0dp"
                 app:cardBackgroundColor="#FEF3C7"
                 app:strokeWidth="1dp"
-                app:strokeCOlor="#FDE68A">
+                app:strokeColor="#FDE68A">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -93,10 +93,10 @@
                         android:textColor="#374151"
                         android:layout_marginTop="12dp"/>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Patient Info-->
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -156,10 +156,10 @@
                         android:textColor="#16A34A"
                         android:textStyle="bold"/>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Tab Selector -->
-            <TableLayout
+            <com.google.android.material.tabs.TabLayout
                 android:id="@+id/hads_tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -167,9 +167,28 @@
                 android:background="@drawable/tab_bg"
                 app:tabMode="fixed"
                 app:tabGravity="fill"
-                >
+                app:tabIndicatorColor="#2563EB"
+                app:tabSelectedTextColor="#2563EB"
+                app:tabTextColor="#6B7280"
+                app:tabIndicatorHeight="3dp">
 
-            </TableLayout>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/anxiety_7_items"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/depression_7_item"/>
+            </com.google.android.material.tabs.TabLayout>
+
+            <!-- Question RecylcerView-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hads_questions_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,22 +33,7 @@ class ResultFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvResultType.text = "Session Assessment Result"
-
-        viewModel.gad7Result.observe(viewLifecycleOwner) { result ->
-            result.onSuccess { response ->
-                // Assuming the response has a total_score or similar if available, 
-                // but since it's not in the GadResponse model we saw, 
-                // we'll just show it's completed.
-                binding.tvScore.text = "GAD-7 & HADS Completed"
-            }
-        }
-        
-        binding.tvLevel.text = "Assessments submitted successfully"
-
-        binding.btnBackHome.setOnClickListener {
-            findNavController().navigate(R.id.homeAdminFragment)
-        }
+        // TODO: Implement result history list loading and adapter binding using result_recycler and empty_state
     }
 
     override fun onDestroyView() {

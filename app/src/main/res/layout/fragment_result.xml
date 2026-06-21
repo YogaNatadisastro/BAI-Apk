@@ -27,7 +27,7 @@
                 android:padding="16dp">
 
                 <!-- Header Card-->
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
@@ -60,7 +60,7 @@
                             android:textColor="#374151"
                             android:layout_marginTop="4dp"/>
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
                 <!--Result RecyclerView-->
                 <androidx.recyclerview.widget.RecyclerView
@@ -69,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"/>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/empty_state"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
                             android:textColor="#9CA3AF"
                             android:layout_marginTop="8dp"/>
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

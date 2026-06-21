@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BAIApp">
         <activity
+            android:name=".ui.patient.PatientInfoActiviity"
+            android:exported="false" />
+        <activity
             android:name=".ui.hads.HadsActivity"
             android:exported="false" />
         <activity
