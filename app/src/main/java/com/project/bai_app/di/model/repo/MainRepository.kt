@@ -1,30 +1,22 @@
 package com.project.bai_app.di.model.repo
 
 import com.project.bai_app.di.api.ApiClient
-import com.project.bai_app.di.model.form.FormRequest
-import com.project.bai_app.di.model.form.FormResponse
+import com.project.bai_app.di.api.ApiService
 import com.project.bai_app.di.model.gad7.GadRequest
 import com.project.bai_app.di.model.hads.HadsRequest
-import com.project.bai_app.di.model.info.InfoRequest
 import com.project.bai_app.di.model.login.LoginRequest
 import com.project.bai_app.di.model.session.SessionRequest
 import com.project.bai_app.di.model.signup.SignupRequest
 
-class MainRepository {
+class MainRepository private constructor(
+    private val apiService: ApiService
+){
 
     suspend fun loginUser(request: LoginRequest) =
         ApiClient.apiService.postLogin(request)
 
     suspend fun registerUser(request: SignupRequest) =
         ApiClient.apiService.postRegister(request)
-
-//    suspend fun postInfoByAdmin(request: InfoRequest) =
-//        ApiClient.apiService.postInfo(request)
-//
-//    suspend fun postForm(
-//        formInfoId: Int,
-//        request: FormRequest
-//    ): FormResponse = ApiClient.apiService.postSubmit(formInfoId, request)
 
     suspend fun sessionAssessment(request: SessionRequest) =
         ApiClient.apiService.startSession(request)
@@ -40,4 +32,14 @@ class MainRepository {
 
     suspend fun getQuestionAll() =
         ApiClient.apiService.getQuestionsAll();
+
+    companion object {
+        @Volatile
+        private var instance: MainRepository? = null
+        fun getInstance(apiService: ApiService): MainRepository{
+            return instance ?: synchronized(this) {
+                instance ?: MainRepository(apiService).also { instance = it }
+            }
+        }
+    }
 }

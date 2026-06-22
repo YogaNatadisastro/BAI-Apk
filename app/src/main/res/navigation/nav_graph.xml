@@ -10,26 +10,41 @@
         android:label="Home Admin Fragment">
         <action
             android:id="@+id/action_homeAdminFragment_to_gad7Fragment"
-            app:destination="@id/gad7Fragment" />
+            app:destination="@id/assessmentFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/assessmentFragment"
+        android:name="com.project.bai_app.ui.form.AssessmentContainerFragment"
+        android:label="Assessment Psikolog Fragment" >
+        <argument
+            android:name="id"
+            app:argType="integer"/>
+        <action
+            android:id="@+id/action_to_gad7"
+            app:destination="@id/gad7Fragment"/>
+        <action
+            android:id="@+id/action_to_hads"
+            app:destination="@id/hadsFragment"/>
+        <action
+            android:id="@+id/action_to_patient_inf0"
+            app:destination="@id/patientInfoFragment"/>
     </fragment>
 
     <fragment
         android:id="@+id/gad7Fragment"
-        android:name="com.project.bai_app.ui.form.Gad7Fragment"
-        android:label="GAD-7 Assessment" >
-        <action
-            android:id="@+id/action_gad7Fragment_to_hadsFragment"
-            app:destination="@id/hadsFragment" />
-    </fragment>
+        android:name="com.project.bai_app.ui.gad7.Gad7Fragment"
+        android:label="Gad7 Form"/>
 
     <fragment
         android:id="@+id/hadsFragment"
-        android:name="com.project.bai_app.ui.form.HadsFragment"
-        android:label="HADS Assessment" >
-        <action
-            android:id="@+id/action_hadsFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
-    </fragment>
+        android:name="com.project.bai_app.ui.hads.HadsFragment"
+        android:label="Hads Form"/>
+
+    <fragment
+        android:id="@+id/patientInfoFragment"
+        android:name="com.project.bai_app.ui.patient.PatientInfoFragment"
+        android:label="Patient Info Form"/>
 
     <fragment
         android:id="@+id/resultFragment"

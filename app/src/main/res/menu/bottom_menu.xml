@@ -7,7 +7,7 @@
         android:icon="@drawable/home"/>
 
     <item
-        android:id="@+id/gad7Fragment"
+        android:id="@+id/assessmentFragment"
         android:title="@string/form"
         android:icon="@drawable/form"/>
 

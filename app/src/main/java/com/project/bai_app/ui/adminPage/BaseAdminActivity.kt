@@ -38,12 +38,8 @@ class BaseAdminActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         bind.bottomNavigation.setOnItemSelectedListener { item ->
-            val currentDestination = navController.currentDestination?.id
-            
-            // Avoid re-navigating to the same destination
-            if (currentDestination == item.itemId) return@setOnItemSelectedListener false
-
-            val navOptions = androidx.navigation.navOptions {
+            val currentDes = navController.currentDestination?.id
+            val navOptBuilder = androidx.navigation.navOptions {
                 anim {
                     enter = R.anim.slide_in_right
                     exit = R.anim.slide_out_left
@@ -51,34 +47,22 @@ class BaseAdminActivity : AppCompatActivity() {
                     popExit = R.anim.slide_out_right
                 }
                 launchSingleTop = true
-                popUpTo(navController.graph.startDestinationId) {
-                    saveState = true
-                }
-                restoreState = true
             }
 
             when (item.itemId) {
                 R.id.homeAdminFragment -> {
-                    navController.navigate(R.id.homeAdminFragment, null, navOptions)
+                    if (currentDes != R.id.homeAdminFragment) {
+                        navController.navigate(R.id.homeAdminFragment, null, navOptBuilder)
+                    }
                     true
                 }
-                R.id.gad7Fragment -> {
-                    navController.navigate(R.id.gad7Fragment, null, navOptions)
+                R.id.assessmentFragment -> {
+                    if (currentDes != R.id.assessmentFragment) {
+                        navController.navigate(R.id.assessmentFragment, null, navOptBuilder)
+                    }
                     true
                 }
                 else -> false
-            }
-        }
-        
-        // Synchronize bottom navigation selection with current destination
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.homeAdminFragment -> {
-                    bind.bottomNavigation.menu.findItem(R.id.homeAdminFragment)?.isChecked = true
-                }
-                R.id.gad7Fragment, R.id.hadsFragment, R.id.resultFragment -> {
-                    bind.bottomNavigation.menu.findItem(R.id.gad7Fragment)?.isChecked = true
-                }
             }
         }
     }

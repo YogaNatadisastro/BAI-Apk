@@ -6,8 +6,6 @@ import com.project.bai_app.di.model.gad7.GadRequest
 import com.project.bai_app.di.model.gad7.GadResponse
 import com.project.bai_app.di.model.hads.HadsRequest
 import com.project.bai_app.di.model.hads.HadsResponse
-import com.project.bai_app.di.model.info.InfoRequest
-import com.project.bai_app.di.model.info.InfoResponse
 import com.project.bai_app.di.model.login.LoginRequest
 import com.project.bai_app.di.model.login.LoginResponse
 import com.project.bai_app.di.model.questions.QuestionsResponse
@@ -34,9 +32,6 @@ interface ApiService {
 
     @GET("bai/questions")
     suspend fun getQuestionsAll(): QuestionsResponse
-
-    @POST("forms/bai/form-info")
-    suspend fun postInfo(@Body infoReq: InfoRequest): InfoResponse
 
     @POST("forms/bai/submit")
     suspend fun postSubmit(

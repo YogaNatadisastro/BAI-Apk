@@ -19,7 +19,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var bind: ActivitySignUpBinding
 
     private val viewModel: SignUpViewModel by viewModels {
-        SignUpViewModelF(repo = MainRepository())
+
     }
 
     private val helper = Helper
