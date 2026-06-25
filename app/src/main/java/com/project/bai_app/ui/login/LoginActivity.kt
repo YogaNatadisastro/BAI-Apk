@@ -17,7 +17,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var bind: ActivityLoginBinding
     private val viewModel: LoginViewModel by viewModels {
-        LoginViewModelF(repo = MainRepository())
+        LoginViewModelF.getInstance(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

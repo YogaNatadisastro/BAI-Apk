@@ -1,5 +1,6 @@
 package com.project.bai_app.ui.signup
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -10,7 +11,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.project.bai_app.R
 import com.project.bai_app.databinding.ActivitySignUpBinding
-import com.project.bai_app.di.model.repo.MainRepository
 import com.project.bai_app.ui.login.LoginActivity
 import com.project.bai_app.utils.Helper
 
@@ -19,7 +19,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var bind: ActivitySignUpBinding
 
     private val viewModel: SignUpViewModel by viewModels {
-
+        SignUpViewModelF.getInstance(this)
     }
 
     private val helper = Helper

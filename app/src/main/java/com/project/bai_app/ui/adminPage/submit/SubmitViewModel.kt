@@ -8,13 +8,10 @@ import com.project.bai_app.di.model.gad7.GadRequest
 import com.project.bai_app.di.model.gad7.GadResponse
 import com.project.bai_app.di.model.hads.HadsRequest
 import com.project.bai_app.di.model.hads.HadsResponse
-import com.project.bai_app.di.model.info.InfoRequest
-import com.project.bai_app.di.model.info.InfoResponse
 import com.project.bai_app.di.model.repo.MainRepository
 import com.project.bai_app.di.model.session.Patient
 import com.project.bai_app.di.model.session.SessionRequest
 import com.project.bai_app.di.model.session.SessionResponse
-import com.project.bai_app.di.model.signup.SignupRequest
 import kotlinx.coroutines.launch
 
 class SubmitViewModel(private val repo: MainRepository): ViewModel() {

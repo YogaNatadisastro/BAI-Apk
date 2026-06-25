@@ -19,7 +19,7 @@ class ResultFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: AssessmentViewModel by activityViewModels {
-        AssessmentViewModelFactory(MainRepository())
+        AssessmentViewModelFactory.getInstance(requireContext())
     }
 
     override fun onCreateView(

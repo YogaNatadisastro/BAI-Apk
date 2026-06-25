@@ -11,6 +11,8 @@ import com.project.bai_app.R
 import com.project.bai_app.databinding.FragmentAssessmentContainerBinding
 import com.project.bai_app.di.model.session.Patient
 import com.project.bai_app.di.model.session.SessionRequest
+import com.project.bai_app.ui.gad7.Gad7Fragment
+import com.project.bai_app.ui.patient.PatientInfoFragment
 
 class AssessmentContainerFragment : Fragment() {
 
@@ -24,16 +26,19 @@ class AssessmentContainerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _bind = FragmentAssessmentContainerBinding.inflate(inflater, container, false)
         return bind.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupObservers()
+        initAssessmentSession()
     }
 
-    private fun initAssessmentSession(userId: Int) {
+    private fun initAssessmentSession() {
         val patientName = arguments?.getString(EXTRA_PATIENT_NAME)
         val patientGender = arguments?.getString(EXTRA_PATIENT_GENDER)
         val patientBirthDate = arguments?.getString(EXTRA_PATIENT_BIRTH_DATE)
@@ -66,9 +71,15 @@ class AssessmentContainerFragment : Fragment() {
             result.onSuccess { sessionResponse ->
                 val activeSessionId = sessionResponse.sessionId
 
-                if (childFragmentManager.findFragmentById(R.id.gad7Fragment) == null) {
-
+                if (childFragmentManager.findFragmentById(R.id.patientInfoFragment) == null) {
+                    navigateToSubFragment(PatientInfoFragment())
                 }
+            }.onFailure { exception ->
+                Toast.makeText(
+                    requireContext(),
+                    "Gagal memulai sesi: ${exception.localizedMessage}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
