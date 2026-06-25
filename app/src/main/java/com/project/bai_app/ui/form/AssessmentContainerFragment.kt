@@ -47,6 +47,10 @@ class AssessmentContainerFragment : Fragment() {
         val sharePref = requireActivity().getSharedPreferences("UserSession", android.content.Context.MODE_PRIVATE)
         val currentAdminId = sharePref.getInt("userId", 0)
 
+        android.util.Log.d("DEBUG Session", "Isi patientName: $patientName")
+        android.util.Log.d("DEBUG Session", "Isi currentAdminId: $currentAdminId")
+
+
         if (patientName != null && currentAdminId != 0) {
             val livaPatientData = Patient(
                 name = patientName,

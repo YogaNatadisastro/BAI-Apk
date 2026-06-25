@@ -1,7 +1,9 @@
 package com.project.bai_app.ui.login
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -12,6 +14,8 @@ import com.project.bai_app.di.model.repo.MainRepository
 import com.project.bai_app.ui.adminPage.BaseAdminActivity
 import com.project.bai_app.ui.signup.SignUpActivity
 import com.project.bai_app.ui.userPage.BaseUserActivity
+import org.koin.core.component.getScopeId
+import kotlin.jvm.Throws
 
 class LoginActivity : AppCompatActivity() {
 
@@ -26,20 +30,23 @@ class LoginActivity : AppCompatActivity() {
         bind = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(bind.root)
 
+        setupAction()
+        setupObservers()
+    }
+
+    private fun setupAction() {
         bind.apply {
             loginBtn.setOnClickListener {
-                val username = bind.email.text.toString().trim()
-                val password = bind.password.text.toString().trim()
+                val username = email.text.toString().trim()
+                val password = password.text.toString().trim()
 
-                if (username == "psikolog" && password == "password123") {
-                    Toast.makeText(this@LoginActivity, "Login Successfully as Psikolog", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this@LoginActivity, BaseAdminActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    viewModel.login(username, password)
+                if (username.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(this@LoginActivity, "Email dan password tidak boleh kosong",
+                        Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
                 }
-                Log.d("LoginActivity", "Press bottom is successfully")
+                viewModel.login(username, password)
+                Log.d("LoginActivity", "Login rqeuest sent for user: $username")
             }
 
             signUpBtn.setOnClickListener {
@@ -48,30 +55,44 @@ class LoginActivity : AppCompatActivity() {
                 finish()
             }
         }
+    }
 
-        viewModel.loginResult.observe(this@LoginActivity) { result ->
+    private fun setupObservers(){
+        viewModel.loginResult.observe(this) { result ->
             result.onSuccess { response ->
-                Toast.makeText(this@LoginActivity, "Login Successfully", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@LoginActivity, BaseAdminActivity::class.java)
-                startActivity(intent)
-                finish()
+                val userId = response.user?.id ?: 0
+                val roleId = response.user?.role?.id ?: 1
+
+                val sharedPref = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+                val editor = sharedPref.edit()
+                editor.putInt("User_id", userId)
+                editor.putInt("Role_id", roleId)
+                editor.apply()
+
+                Toast.makeText(this, "Login Successfully", Toast.LENGTH_SHORT).show()
+
+                navigateToMain(roleId)
+            }.onFailure { exception ->
+                Toast.makeText(
+                    this,
+                    "Login gagal: ${exception.localizedMessage ?: "Periksa koneksi anda"}",
+                    Toast.LENGTH_SHORT
+                ).show()
+                Log.e("LoginActivity", "Login Error: ${exception.message}")
             }
         }
     }
 
     private fun navigateToMain(roleId: Int) {
-       when (roleId) {
-           1 -> {
-               startActivity(Intent(this, BaseAdminActivity::class.java).apply {
-                   flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-               })
-           }
-           2 -> {
-               startActivity(Intent(this, BaseUserActivity::class.java).apply {
-                   flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-               })
-           }
+       val intent = when (roleId) {
+           1 -> Intent(this, BaseAdminActivity::class.java)
+           2 -> Intent(this, BaseUserActivity::class.java)
+           else -> Intent(this, BaseUserActivity::class.java)
        }
+
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 
 }
